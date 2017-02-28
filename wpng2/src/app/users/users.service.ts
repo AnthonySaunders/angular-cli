@@ -5,21 +5,20 @@ import { Observable } from 'rxjs/Observable';
 
 import 'rxjs/add/operator/map';
 
-import { Post } from './post';
+import { User } from './user';
 
 @Injectable()
-export class PostsService {
+export class UsersService {
 
-	private postsUrl = "http://localhost/wordpress/wp-json/wp/v2/"
+	private usersUrl = "http://localhost/wordpress/wp-json/wp/v2/"
 
 	constructor(private http: Http) { }
   
-	getPosts(): Observable<Post[]>{
-		
+	getUsers(): Observable<User[]>{
 		return this.http
-			.get(this.postsUrl + 'posts')
+			.get(this.usersUrl + 'users')
 			.map((res: Response) => res.json());
-		
+	
 	}
 
 }
